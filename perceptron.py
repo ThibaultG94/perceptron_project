@@ -7,6 +7,9 @@ class BasePerceptron:
     Base abstract class that defines what every perceptron should be able to do.
     Think of it as a blueprint for all perceptron.
     """
+    ZERO_MODEL_FILE = "zero_perceptron.json"
+    RANDOM_MODEL_FILE = "random_perceptron.json"
+
     def __init__(self):
         self.weight = None
         self.bias = None
@@ -91,8 +94,17 @@ class BasePerceptron:
 
     def save_model(self, filename="perceptron_model.json"):
         """
-        Save the perceptron's current state and training history
+        Save the perceptron's state to a JSON file.
+        Uses the appropriate default filename if none is provided.
         """
+        if filename is None:
+            if isinstance(self, ZeroPerceptron):
+                filename = self.ZERO_MODEL_FILE
+            elif isinstance(self, RandomPerceptron):
+                filename = self.RANDOM_MODEL_FILE
+            else:
+                filename = "perceptron_model.json"
+                
         model_data = {
             'type': self.__class__.__name__,  # ZeroPerceptron or RandomPerceptron
             'parameters': {
@@ -129,6 +141,7 @@ class ZeroPerceptron(BasePerceptron):
     A perceptron that starts with zero weight and bias.
     """
     def __init__(self):
+        super().__init__()
         self.weight = 0.0
         self.bias = 0.0
 
@@ -138,5 +151,6 @@ class RandomPerceptron(BasePerceptron):
     This can help find solutions faster in some cases.
     """
     def __init__(self):
+        super().__init__()
         self.weight = np.random.rand() # Random value between 0 and 1
         self.bias = np.random.rand() # Random value between 0 and 1
