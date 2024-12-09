@@ -1,12 +1,27 @@
-class Perceptron:
+import numpy as np
+
+class BasePerceptron:
     """
-    Un perceptron qui apprend à classifier des nombres comme positifs ou négatifs.
+    Base abstract class that defines what every perceptron should be able to do.
+    Think of it as a blueprint for all perceptron.
     """
     def __init__(self):
-        """
-        Constructeur : s'execute à la création d'un nouveau Perceptron
-        C'est ici qu'on initialise les attributs de notre perceptron
-        """
-        # Les attributs sont définis avec self.
-        self.poids = 0.0 # Le poids commence à zéro
-        self.biais = 0.0 # Le biais commence à zéro
+        self.weight = None
+        self.bias = None
+
+class ZeroPerceptron(BasePerceptron):
+    """
+    A perceptron that starts with zero weight and bias.
+    """
+    def __init__(self):
+        self.weight = 0.0
+        self.bias = 0.0
+
+class RandomPerceptron(BasePerceptron):
+    """
+    A perceptron that starts with random weight and bias.
+    This can help find solutions faster in some cases.
+    """
+    def __init__(self):
+        self.weight = np.random.rand() # Random value between 0 and 1
+        self.bias = np.random.rand() # Random value between 0 and 1
