@@ -65,6 +65,9 @@ class BasePerceptron:
         # Make a prediction
         prediction = self.predict(input_number)
 
+        # Log the training step
+        self.log_state(input_number, prediction, correct_answer)
+
         # If prediction is wrong, adjust weights and bias
         if prediction != correct_answer:
              # Calculate error and update parameters
@@ -76,9 +79,6 @@ class BasePerceptron:
              print(f"Made a mistake! Adjusting parameters...")
         else:
             print("Correct prediction! No adjustments needed.")
-
-        # Log the training step
-        self.log_state(input_number, prediction, correct_answer)
 
     def analyze_performance(self):
         """
@@ -92,7 +92,7 @@ class BasePerceptron:
         print(f"Correct predictions: {correct_predictions}")
         print(f"Accuracy: {(correct_predictions/total_steps)*100:.2f}%")
 
-    def save_model(self, filename="perceptron_model.json"):
+    def save_model(self, filename=None):
         """
         Save the perceptron's state to a JSON file.
         Uses the appropriate default filename if none is provided.

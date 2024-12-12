@@ -1,0 +1,58 @@
+{
+    "type": "RandomPerceptron",
+    "parameters": {
+        "weight": 0.2615748753473025,
+        "bias": 0.15581116849423737
+    },
+    "history": [
+        {
+            "weight": 0.2615748753473025,
+            "bias": 0.15581116849423737,
+            "input": 5,
+            "prediction": 1,
+            "correct_answer": 1,
+            "was_correct": true
+        },
+        {
+            "weight": 0.2615748753473025,
+            "bias": 0.15581116849423737,
+            "input": -3,
+            "prediction": -1,
+            "correct_answer": -1,
+            "was_correct": true
+        },
+        {
+            "weight": 0.2615748753473025,
+            "bias": 0.15581116849423737,
+            "input": 2,
+            "prediction": 1,
+            "correct_answer": 1,
+            "was_correct": true
+        },
+        {
+            "weight": 0.2615748753473025,
+            "bias": 0.15581116849423737,
+            "input": -1,
+            "prediction": -1,
+            "correct_answer": -1,
+            "was_correct": true
+        },
+        {
+            "weight": 0.2615748753473025,
+            "bias": 0.15581116849423737,
+            "input": 7,
+            "prediction": 1,
+            "correct_answer": 1,
+            "was_correct": true
+        },
+        {
+            "weight": 0.2615748753473025,
+            "bias": 0.15581116849423737,
+            "input": -6,
+            "prediction": -1,
+            "correct_answer": -1,
+            "was_correct": true
+        }
+    ],
+    "saved_at": "2024-12-12 16:22:45"
+}
