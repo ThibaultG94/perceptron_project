@@ -1,16 +1,20 @@
+import numpy as np
 from perceptron import ZeroPerceptron, RandomPerceptron
 
+def generate_training_data(n_samples, min_val=-10, max_val=10):
+    # Génère les nombres aléatoires
+    numbers = np.random.uniform(min_val, max_val, n_samples)
+    # Génère les labels (-1 ou 1)
+    labels = np.sign(numbers)
+    # Combine en liste de tuples
+    return list(zip(numbers, labels))
+
+# Création des perceptrons
 zero_perceptron = ZeroPerceptron()
 random_perceptron = RandomPerceptron()
 
-training_data = [
-    (5, 1),     # Big positive number
-    (-3, -1),   # Average negative number
-    (2, 1),     # Small positive number
-    (-1, -1),   # Small negative number
-    (7, 1),     # Big positive number
-    (-6, -1)    # Big negative number
-]
+# Génération des données d'entraînement
+training_data = generate_training_data(100)
 
 print("=== Entraînement du Zero Perceptron ===")
 for number, expected in training_data:
