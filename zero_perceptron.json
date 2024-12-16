@@ -1,58 +1,14 @@
 {
     "type": "ZeroPerceptron",
     "parameters": {
-        "weight": 0.6000000000000001,
-        "bias": -0.2
+        "weight": 0.5587772782649966,
+        "bias": 0.0
     },
     "history": [
         {
             "weight": 0.0,
             "bias": 0.0,
-            "input": 5,
+            "input": -2.50919762305275,
             "prediction": 1,
-            "correct_answer": 1,
-            "was_correct": true
-        },
-        {
-            "weight": 0.0,
-            "bias": 0.0,
-            "input": -3,
-            "prediction": 1,
-            "correct_answer": -1,
-            "was_correct": false
-        },
-        {
-            "weight": 0.6000000000000001,
-            "bias": -0.2,
-            "input": 2,
-            "prediction": 1,
-            "correct_answer": 1,
-            "was_correct": true
-        },
-        {
-            "weight": 0.6000000000000001,
-            "bias": -0.2,
-            "input": -1,
-            "prediction": -1,
-            "correct_answer": -1,
-            "was_correct": true
-        },
-        {
-            "weight": 0.6000000000000001,
-            "bias": -0.2,
-            "input": 7,
-            "prediction": 1,
-            "correct_answer": 1,
-            "was_correct": true
-        },
-        {
-            "weight": 0.6000000000000001,
-            "bias": -0.2,
-            "input": -6,
-            "prediction": -1,
-            "correct_answer": -1,
-            "was_correct": true
-        }
-    ],
-    "saved_at": "2024-12-12 16:22:45"
-}
+            "correct_answer": -1.0,
+            "was_correct": 
