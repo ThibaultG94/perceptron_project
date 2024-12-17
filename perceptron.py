@@ -94,8 +94,8 @@ class BasePerceptron:
 
     def save_model(self, filename=None):
         """
-        Save the perceptron's state to a JSON file.
-        Uses the appropriate default filename if none is provided.
+        Sauvegarde l'état du perceptron dans un fichier JSON.
+        Convertit les booléens en entiers pour la sérialisation.
         """
         if filename is None:
             if isinstance(self, ZeroPerceptron):
@@ -104,14 +104,22 @@ class BasePerceptron:
                 filename = self.RANDOM_MODEL_FILE
             else:
                 filename = "perceptron_model.json"
-                
+        
+        # Fonction pour convertir les booléens en entiers dans l'historique
+        def convert_entry(entry):
+            converted = entry.copy()
+            if 'was_correct' in converted:
+                converted['was_correct'] = 1 if converted['was_correct'] else 0
+            return converted
+
+        # Création des données du modèle avec conversion des booléens
         model_data = {
-            'type': self.__class__.__name__,  # ZeroPerceptron or RandomPerceptron
+            'type': self.__class__.__name__,
             'parameters': {
                 'weight': float(self.weight),
                 'bias': float(self.bias)
             },
-            'history': self.history,
+            'history': [convert_entry(entry) for entry in self.history],
             'saved_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         }
 
@@ -122,15 +130,22 @@ class BasePerceptron:
 
     def load_model(self, filename='perceptron_model.json'):
         """
-        Load a previously saved perceptron model
+        Charge un modèle précédemment sauvegardé.
+        Convertit les entiers en booléens pour la cohérence.
         """
         with open(filename, 'r') as f:
             model_data = json.load(f)
 
-        # Restore parameters
+        # Restaurer les paramètres
         self.weight = model_data['parameters']['weight']
         self.bias = model_data['parameters']['bias']
-        self.history = model_data['history']
+        
+        # Convertir les entiers en booléens dans l'historique
+        self.history = []
+        for entry in model_data['history']:
+            if 'was_correct' in entry:
+                entry['was_correct'] = bool(entry['was_correct'])
+            self.history.append(entry)
 
         print(f"Model loaded from {filename}")
         print(f"Model type: {model_data['type']}")
